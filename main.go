@@ -29,10 +29,10 @@ party is a tool that performs all of this work. It:
 
 1. Rewrites all external imports in both your project and the third party
 directory from "other.com/user/package" to
-"host.com/user/your_project/vendor/other.com/user/package".
+"host.com/user/your_project/_vendor/other.com/user/package".
 
 2. Updates or copies files from "$GOPATH/src/other.com/user/package" to
-"$GOPATH/src/host.com/user/your_project/vendor/other.com/user/package".
+"$GOPATH/src/host.com/user/your_project/_vendor/other.com/user/package".
 
 3. Returns to step 1 until no more rewrites are performed.
 
@@ -50,7 +50,7 @@ The flags are:
 	-u
 		run "go get -d -u <pkg>" on packages imported by party for the
 		current package
-	-d="vendor"
+	-d="_vendor"
 		set the third party directory
 	-v
 		enable verbose output
@@ -113,7 +113,7 @@ var (
 	create     = flag.Bool("c", false, "create the third party directory if needed")
 	relative   = flag.Bool("r", false, "use a relative third party directory (needed on App Engine)")
 	verbose    = flag.Bool("v", false, "print actions")
-	thirdParty = flag.String("d", "vendor", "name of third party directory")
+	thirdParty = flag.String("d", "_vendor", "name of third party directory")
 	flagUpdate = flag.Bool("u", false, "update (go get -d -u) used packages")
 
 	relpath, gopath, ThirdParty string
